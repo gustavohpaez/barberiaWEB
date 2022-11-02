@@ -1,0 +1,131 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block body %}
+                       
+
+    <div class="header__cart">
+        <ul>
+            <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
+            <li><a href="{% url 'widget' %}"><i class="fa fa-shopping-cart"></i> <span>0</span></a></li>
+        </ul>
+        <div class="header__cart__price">Total: <span>$ {{importe_total_carro}}</span></div>
+    </div>
+
+
+{% endblock %}
+
+{%  block headers %}
+
+<!-- Barra info Section Begin -->
+<section class="breadcrumb-section set-bg">
+    <div class="container" style="background-color:black;" >
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Carro</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Barra info Section End -->
+
+ <!-- Shoping Cart Section Begin -->
+ <section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="shoping__product">Products</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if request.session.carro.items %}
+                                {% for key, value in request.session.carro.items %}
+
+                                    <tr>
+                                        <td class="shoping__cart__item">
+                                            <img src="img/cart/cart-1.jpg" alt="">
+                                            <h5>{{value.nombre}}</h5>
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            ${{value.precio}}
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    <input type="text" value="{{value.cantidad}}">
+                                                    <a href="{% url 'carro:agregar' value.producto_id %}" class="btn btn-sm btn-success">+</a>
+                                                    <a href="{% url 'carro:restar' value.producto_id %}" class="btn btn-sm btn-success">-</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="shoping__cart__total">
+                                            $110.00
+                                        </td>
+                                        <td class="shoping__cart__item__close">
+                                            <span class="icon_close"></span>
+                                        </td>
+                                    </tr>
+                                    
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="alert alert-danger text-center">
+                                            Sin productos
+                                        </div>
+                                    </td>        
+                                </tr>        
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__btns">
+                    <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                    <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                        Upadate Cart</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="shoping__continue">
+                    <div class="shoping__discount">
+                        <h5>Discount Codes</h5>
+                        <form action="#">
+                            <input type="text" placeholder="Enter your coupon code">
+                            <button type="submit" class="site-btn">APPLY COUPON</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="shoping__checkout">
+                    <h5>Cart Total</h5>
+                    <ul>
+                        <li>Subtotal <span>$0</span></li>
+                        <li>Total <span>$ {{importe_total_carro}}</span></li>
+                    </ul>
+                    <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shoping Cart Section End --> 
+
+{% endblock %}
+

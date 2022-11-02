@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{%  block headers %}
+
+<!-- Barra info Section Begin -->
+<section class="breadcrumb-section set-bg">
+    <div class="container" style="background-color:black;" >
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Servicios</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Barra info Section End -->
+
+    {% for servicio in servicios %}
+
+<div><p>
+
+    <h2>{{servicio.titulo}}</h2>
+
+    <p>{{servicio.contenido}}</p>
+
+    <p><img src="{{servicio.imagen.url}}" style="width: -50%"></p>
+
+</p></div>
+    
+    {% endfor %}
+
+{% endblock %}
