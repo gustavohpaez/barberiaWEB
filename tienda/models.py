@@ -3,8 +3,10 @@ from django.db import models
 class CategoriaProd(models.Model):
     nombre=models.CharField(max_length=250)
     activo=models.BooleanField(default=True)
+    imagen=models.ImageField(upload_to='tienda', null=True, blank=True)
     created=models.DateField(auto_now_add=True)
     update=models.DateField(auto_now_add=True)
+    
 
     class Meta:
         verbose_name="categoriaProd"
