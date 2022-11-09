@@ -11,3 +11,8 @@ def home(request):
 
     return render(request, "core/home.html", {"categoria":categoria, "productos":productos})
 
+def base(request):    
+
+    categoria=CategoriaProd.objects.all()
+    
+    return render(request, "core/base.html", {"categoria":categoria})
