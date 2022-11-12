@@ -28,7 +28,19 @@
     <div>
         <button type="submit" class="btn btn-success">Login</button>
     </div>
+    <br/><br/><br/>
+    <div>
+        {% if messages %}
 
+            {% for mensaje in messages %}
+
+                <span class="alert alert-{{mensaje.tags}}">{{mensaje}}</span>
+                
+
+            {% endfor %}
+
+        {% endif %}
+    </div>    
 </form>
-
+<br/><br/><br/>
 {% endblock %}
