@@ -87,7 +87,11 @@
                         <li>Subtotal <span>$0</span></li>
                         <li>Total <span>$ {{importe_total_carro}}</span></li>
                     </ul>
-                    <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+
+                    {% if request.session.carro.items%}
+                    <a href="#" class="primary-btn">HACER PEDIDO</a>
+                    {% endif%}
+                    
                 </div>
             </div>
         </div>
