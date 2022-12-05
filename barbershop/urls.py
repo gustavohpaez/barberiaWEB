@@ -14,6 +14,7 @@ urlpatterns = [
     path('tienda/', include('tienda.urls')),
     path('carro/', include('carro.urls')),
     path('autenticacion/', include('autenticacion.urls')),
+    path('pedidos/', include('carro.urls')),
     
 ]
 urlpatterns += staticfiles_urlpatterns()
